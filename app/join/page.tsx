@@ -1,14 +1,14 @@
 "use client";
 
 import { useSearchParams, useRouter } from "next/navigation";
-import { useState } from "react";
+import { Suspense, useState } from "react";
 import Link from "next/link";
 import { validateName, validateRoomCode } from "@/lib/validation";
 import { generateRoomCode } from "@/lib/room-code";
 import { supabase } from "@/lib/supabase";
 import { saveLocalPlayer } from "@/lib/storage";
 
-export default function JoinPage() {
+function JoinPageContent() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const isHostMode = searchParams.get("host") === "true";
@@ -28,7 +28,7 @@ export default function JoinPage() {
 
       const { error } = await supabase.from("rooms").insert({
         code: candidateCode,
-        category: "Food",
+        category: "Random",
         phase: "lobby"
       });
 
@@ -264,5 +264,13 @@ export default function JoinPage() {
         </form>
       </div>
     </main>
+  );
+}
+
+export default function JoinPage() {
+  return (
+    <Suspense fallback={null}>
+      <JoinPageContent />
+    </Suspense>
   );
 }
