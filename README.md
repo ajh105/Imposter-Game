@@ -37,14 +37,14 @@ Players join a room using a code, receive a secret word (except the imposters), 
    NEXT_PUBLIC_SUPABASE_URL=...
    NEXT_PUBLIC_SUPABASE_ANON_KEY=...
 
-3. Make sure your Supabase project includes the required tables:
+4. Make sure your Supabase project includes the required tables:
    - rooms
    - players
    - rounds
    - votes
    - word_bank
 
-4. Start the dev server:
+5. Start the dev server:
    npm run dev
 
-5. Open http://localhost:3000
+6. Open http://localhost:3000
