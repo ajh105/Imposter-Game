@@ -28,10 +28,23 @@ Players join a room using a code, receive a secret word (except the imposters), 
 
 ---
 
-## Running Locally
+## Local Setup
 
-Clone the repo:
+1. Install dependencies:
+   npm install
 
-```bash
-git clone https://github.com/ajh105/Imposter-Game
-cd Imposter-Game
+2. Create a `.env.local` file with:
+   NEXT_PUBLIC_SUPABASE_URL=...
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=...
+
+3. Make sure your Supabase project includes the required tables:
+   - rooms
+   - players
+   - rounds
+   - votes
+   - word_bank
+
+4. Start the dev server:
+   npm run dev
+
+5. Open http://localhost:3000
